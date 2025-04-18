@@ -16,7 +16,7 @@ def prepare_body(body, user_name) -> str:
 
 def load_json():
     try:
-        with open('for_fat.json', 'r', encoding='utf-8') as f:
+        with open('....json', 'r', encoding='utf-8') as f:
             data = json.load(f)
 
         # Check for valid keys...
@@ -30,7 +30,7 @@ def load_json():
     except KeyError as e:
         print(f"\n⚠️ ERROR: {e}")
     except FileNotFoundError:
-        print("\n⚠️ ERROR: JSON file: 'for_fat.json' not found!!!.")
+        print("\n⚠️ ERROR: JSON file: '....json' not found!!!.")
     except Exception as e:
         print("\n⚠️ ERROR: Unexpected error occurred...")
 
