@@ -48,7 +48,7 @@ outlook_automation/
 
 ## ⚙️ Configuration
 
-settings.json
+### settings.json
 This file defines global app behavior. Users can freely edit values, but should not change the keys.
 
 ```json
@@ -56,18 +56,20 @@ This file defines global app behavior. Users can freely edit values, but should 
   "lang": "en",
   "signature": "Your Name"
 }
+```
 lang: Language of greetings and signature block ("en" for English, "gr" for Greek)
-```json
 signature: Will appear at the bottom of the email
-mail_config.json
+
+### mail_config.json
 Defines email content such as recipients and message body.
-json```
+```json
 {
   "recipients": "email1@example.com;email2@example.com",
   "cc_recipients": "cc1@example.com",
   "user_name": "Your Name",
   "body": "Please review the issue number "
 }
+```
 recipients: Semicolon-separated primary recipients
 
 cc_recipients: Semicolon-separated CC recipients
