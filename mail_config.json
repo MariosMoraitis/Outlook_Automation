@@ -1,0 +1,7 @@
+{
+    "recipients": "someone@example.com",
+    "cc_recipients": "manager@example.com",
+    "body": "Please review and take the necessary action regarding the issue.",
+    "user_name": "Your Name"
+}
+  
