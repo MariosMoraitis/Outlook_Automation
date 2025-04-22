@@ -1,43 +1,94 @@
-# Welcome to: Outlook Automation!
-This .exe app, allows you to automate Outlook emails .
+# 📧 Outlook Automation Tool
 
-## What You Need
+A lightweight desktop tool written in **Python** to automate repetitive email tasks using **Microsoft Outlook**.
 
-- A Windows 10 or 11 computer  
-- Microsoft Outlook installed and set up  
-- The file `` in the same folder as the app  
-- The `Outlook_Automation.exe` file (no need to install Python)  
+This app allows users to:
+- Automatically fill in recipient details
+- Set email subject and body dynamically
+- Include a greeting based on time of day (Good morning / Good evening)
+- Sign off with a personalized signature
+- Use localized messages via configuration
 
-## Files You Should See
+> The final app is compiled to `.exe` using **PyInstaller**, so Python is not required on the end user's system.
 
-- `Outlook_Automation.exe` - The application  
-- `` - Configuration file for email details  
-- `user_guide.pdf` - This guide
-- `outlook_automation.py` - Source code
+---
 
-## How to Use It
+## 🚀 Features
 
-1. Double-click `Outlook_Automation.exe`  
-2. You will be asked to enter an issue number (e.g., ABC123)  
-   This will be used as the email subject.  
-3. The program will:  
-   - Open Microsoft Outlook  
-   - Create a new email  
-   - Fill in the recipients, subject, and message body  
-   - Add a greeting and your name as a sign-off  
-   - Leave the email open so you can review or edit it  
-4. You can then click Send (or make edits first).  
+- 🕓 Time-based greeting (morning/evening)
+- 📎 Custom signature
+- 🌐 Multi-language support (Greek/English)
+- ⚙️ User-configurable JSON files
+- 🧠 Error handling with informative messages
+- ✅ Works offline, locally
 
-## Setup the .json File
+---
 
-Here is an example of what it should look like:
+## 🧰 Requirements
+
+- Windows 10/11
+- Microsoft Outlook installed
+
+For development only:
+- Python 3.x
+- `pywin32` package
+
+---
+
+## 📁 Project Structure
+
+outlook_automation/
+│
+├── config_en.py           # English greeting and sign-off texts
+├── config_gr.py           # Greek greeting and sign-off texts
+├── settings.json          # Global parameters (e.g. language, signature)
+├── mail_config.json       # Email template configuration (recipients, body, etc.)
+├── main.py                # Main application script
+├── README.md              # Documentation
+
+## ⚙️ Configuration
+
+settings.json
+This file defines global app behavior. Users can freely edit values, but should not change the keys.
 
 ```json
 {
-  "recipients": "someone@example.com",
-  "cc_recipients": "manager@example.com",
-  "body": "Please review and take the necessary action regarding the issue.",
-  "user_name": "Your Name"
+  "lang": "en",
+  "signature": "Your Name"
 }
+lang: Language of greetings and signature block ("en" for English, "gr" for Greek)
 
-You can edit the json data as you like!!!
+signature: Will appear at the bottom of the email
+
+mail_config.json
+Defines email content such as recipients and message body.
+
+```json
+{
+  "recipients": "email1@example.com;email2@example.com",
+  "cc_recipients": "cc1@example.com",
+  "user_name": "Your Name",
+  "body": "Please review the issue number "
+}
+recipients: Semicolon-separated primary recipients
+
+cc_recipients: Semicolon-separated CC recipients
+
+user_name: Will appear as part of the signature
+
+body: The main part of the email — the issue number will be appended automatically.
+
+## ▶️ How to Use
+Run the compiled .exe file (no need for Python).
+
+When prompted, enter the issue number.
+
+Microsoft Outlook will open with a new email draft:
+
+Recipients filled in
+
+Subject set as the issue number
+
+Body formatted with a greeting, message, and signature
+
+You can review and send the email manually.
