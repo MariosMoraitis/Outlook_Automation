@@ -57,13 +57,11 @@ This file defines global app behavior. Users can freely edit values, but should 
   "signature": "Your Name"
 }
 lang: Language of greetings and signature block ("en" for English, "gr" for Greek)
-
+```json
 signature: Will appear at the bottom of the email
-
 mail_config.json
 Defines email content such as recipients and message body.
-
-```json
+json```
 {
   "recipients": "email1@example.com;email2@example.com",
   "cc_recipients": "cc1@example.com",
