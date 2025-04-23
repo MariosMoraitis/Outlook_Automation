@@ -4,6 +4,7 @@ import json
 import os
 try:
     # Load settings from settings.json
+    signature_flag = False
     with open('settings.json', 'r', encoding='utf-8') as f:
         settings = json.load(f)
         
@@ -19,42 +20,36 @@ try:
     else:
         from config_en import *
 
+    if settings["signature"].strip().lower() == 'yes':
+        signature_flag = True
+
 except KeyError as e:
      # Handle missing required keys in settings.json
     print(f"\n⚠️ ERROR: {e}")
     quit()
 except FileNotFoundError:
     # Handle missing settings.json file
-    print("\n⚠️ ERROR: JSON file: '....json' not found!!!.")
+    print("\n⚠️ ERROR: JSON file: 'settings.json' not found!!!.")
     quit()
 except Exception as e:
     # Handle any other unexpected errors
     print("\n⚠️ ERROR: Unexpected error occurred...")
     quit()
 
-
-
-def prepare_body(body, user_name) -> str:
+def get_greeting() -> str:
     """
-    Constructs the full email body with a greeting and a sign-off,
-    based on the current time of day and the provided user name.
-
-    Args:
-        body (str): The main message body of the email.
-        user_name (str): The name of the sender to be included in the signature.
+    Constructs a greeting, based on the current time of day.
 
     Returns:
-        str: The final formatted email body.
+        str: The final formatted greeting.
     """
     time: int = datetime.now().hour
     if time < 12:
-        greeting: str = f"{MORNING_GREETING},\n\n"
+        greeting: str = f"{MORNING_GREETING}," # type: ignore
     else:
-        greeting: str = f"{EVENING_GREETING},\n\n"
+        greeting: str = f"{EVENING_GREETING}," # type: ignore
     
-    sign_off: str = f'\n\n{SIGN_OFF},\n{user_name}'
-
-    return greeting + body + sign_off
+    return greeting
 
 def load_json() -> dict | None:
     """
@@ -70,7 +65,7 @@ def load_json() -> dict | None:
         return data
     
     except FileNotFoundError:
-        print("\n⚠️ ERROR: JSON file: '....json' not found!!!.")
+        print("\n⚠️ ERROR: JSON file: mail_config.json' not found!!!.")
     except Exception as e:
         print("\n⚠️ ERROR: Unexpected error occurred...")
 
@@ -90,13 +85,21 @@ def outlook_main() -> None:
     if data:
         mail.to = data["recipients"]
         mail.cc = data["cc_recipients"]
-        mail.Subject = f"{issue_number}"
+        if data["subject"]:
+            mail.Subject = data["subject"]
+        else:
+            mail.Subject = f"{issue_number}"
 
-        data["body"] += f'{issue_number}.'
-        body: str = prepare_body(data["body"], data["user_name"])
-        mail.Body = body
-
+        _greeting: str = get_greeting()
+        body: str = f'{data["body"]} {issue_number}.'
         mail.Display()
+        if signature_flag:
+            signature = mail.HTMLBody  # This now contains the default Outlook signature
+            # Now insert your text above the signature
+            final_body: str = f'{_greeting}<br><br>{body}\n\n{signature}'
+            mail.HTMLBody = final_body
+        else:
+            mail.Body = f'{_greeting}\n\n{body}\n\n{SIGN_OFF},\n{data["user_name"]}' # type: ignore
 
 if __name__ == '__main__':
     print('Welcome to Outlook automation!')
