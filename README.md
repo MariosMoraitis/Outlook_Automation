@@ -44,7 +44,7 @@ This file defines global app behavior. Users can freely edit values, but should 
 ```json
 {
   "lang": "en",
-  "signature": "Your Name"
+  "signature": "yes"
 }
 ```
 lang: Language of greetings and signature block ("en" for English, "gr" for Greek)
