@@ -10,6 +10,7 @@ This app allows users to:
 - Use localized messages via configuration
 
 > The final app is compiled to `.exe` using **PyInstaller**, so Python is not required on the end user's system.
+> You can download the standalone executable for your platform from the [Release Page](https://github.com/MariosMoraitis/Outlook_Automation/releases), and run it without installing Python.
 
 ---
 
