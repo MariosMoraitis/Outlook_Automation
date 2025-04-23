@@ -36,17 +36,6 @@ For development only:
 
 ---
 
-## 📁 Project Structure
-
-outlook_automation/
-│
-├── config_en.py           # English greeting and sign-off texts
-├── config_gr.py           # Greek greeting and sign-off texts
-├── settings.json          # Global parameters (e.g. language, signature)
-├── mail_config.json       # Email template configuration (recipients, body, etc.)
-├── main.py                # Main application script
-├── README.md              # Documentation
-
 ## ⚙️ Configuration
 
 ### settings.json
@@ -68,12 +57,15 @@ Defines email content such as recipients and message body.
   "recipients": "email1@example.com;email2@example.com",
   "cc_recipients": "cc1@example.com",
   "user_name": "Your Name",
+  "subject": "",
   "body": "Please review the issue number "
 }
 ```
 recipients: Semicolon-separated primary recipients
 
 cc_recipients: Semicolon-separated CC recipients
+
+subject: If left blank, User's input will be inserted.
 
 user_name: Will appear as part of the signature
 
