@@ -5,7 +5,7 @@ import os
 try:
     # Load settings from settings.json
     signature_flag = False
-    with open('settings.json', 'r', encoding='utf-8') as f:
+    with open('parameters/settings.json', 'r', encoding='utf-8') as f:
         settings = json.load(f)
         
      # Check if all required keys exist in the settings
@@ -60,7 +60,7 @@ def load_json() -> dict | None:
         or None if the file is missing or an error occurs.
     """
     try:
-        with open('mail_config.json', 'r', encoding='utf-8') as f:
+        with open('parameters/mail_config.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
         return data
     

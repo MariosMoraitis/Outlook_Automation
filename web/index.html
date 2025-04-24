@@ -6,12 +6,13 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <h2>Send Mail via Outlook</h2>
-        <input type="text" id="issueInput" placeholder="Enter issue number" />
-        <button onclick="sendMail()">Send Mail</button>
-
-        <p id="status"></p>
-
+        <div class="container">
+            <h2>Send Mail via Outlook</h2>
+            <input type="text" id="issueInput" placeholder="Enter issue number" />
+            <button onclick="sendMail()">Send Mail</button>
+            <button onclick="window.location.href='settings.html'">Settings</button>
+            <p id="status"></p>
+        </div>
         <!-- Required for eel-->
         <script type="text/javascript" src="/eel.js"></script>
         <script src="script.js"></script>
