@@ -1,2 +1,7 @@
 pyinstaller.exe
 outlook_automation.exe
+dist.zip
+dist/LICENSE
+dist/mail_config.json
+dist/README.md
+dist/settings.json

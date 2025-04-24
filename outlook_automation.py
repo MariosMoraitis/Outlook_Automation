@@ -69,13 +69,12 @@ def load_json() -> dict | None:
     except Exception as e:
         print("\n⚠️ ERROR: Unexpected error occurred...")
 
-def outlook_main() -> None:
+def outlook_main(issue_number) -> None:
     """
     Main function that prepares and opens an Outlook email draft.
     It loads user input and email settings, formats the message,
     and uses Outlook's COM interface to open the email ready to send.
     """
-    issue_number: str = input('Enter the issue number: ').strip().upper()
     print("Let's prepare the mail...")
 
     outlook = win32com.client.Dispatch("Outlook.Application")
@@ -103,5 +102,6 @@ def outlook_main() -> None:
 
 if __name__ == '__main__':
     print('Welcome to Outlook automation!')
-    outlook_main()
+    issue_number: str = input('Enter the issue number: ').strip().upper()
+    outlook_main(issue_number)
     os.system('pause')
