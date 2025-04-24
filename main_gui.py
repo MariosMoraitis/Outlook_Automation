@@ -35,4 +35,4 @@ def send_email(issue_number):
     
     return "✅ Email prepared!"
 
-eel.start('index.html', size=(400, 300))
+eel.start('index.html', size=(500, 500))

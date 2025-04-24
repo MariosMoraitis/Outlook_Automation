@@ -10,4 +10,8 @@ async function saveSettings() {
 
     const result = await eel.update_settings(lang,signature)();
     document.getElementById("saveStatus").innerText = result;
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1000);
 }
