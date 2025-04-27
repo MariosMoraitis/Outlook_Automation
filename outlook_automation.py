@@ -1,7 +1,6 @@
 from datetime import datetime
 import win32com.client
 import json
-import os
 import importlib
 
 def load_settings_and_config():
@@ -114,6 +113,7 @@ def outlook_main(issue_number) -> None:
             mail.Body = f'{_greeting}\n\n{body}\n\n{config.SIGN_OFF},\n{data["user_name"]}' # type: ignore
 
 if __name__ == '__main__':
+    import os
     print('Welcome to Outlook automation!')
     issue_number: str = input('Enter the issue number: ').strip().upper()
     outlook_main(issue_number)

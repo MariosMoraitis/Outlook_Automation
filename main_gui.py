@@ -1,8 +1,22 @@
 import eel
 import json
+import sys
+import os
 from outlook_automation import outlook_main
 
-eel.init('web')
+# Fix path when bundled with PyInstaller
+def resource_path(relative_path) -> str:
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller stores data files in a temp folder
+        base_path = sys.MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
+web_dir: str = resource_path('web')
+eel.init(web_dir)
 
 @eel.expose
 def get_settings():
