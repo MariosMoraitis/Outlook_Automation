@@ -1,4 +1,4 @@
-# 📬 Outlook Automation
+# 📧 Outlook Automation
 
 **Outlook Automation** is a Python-based app that helps you quickly prepare Outlook email drafts based on predefined templates, greetings, and user settings.
 
@@ -70,3 +70,16 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+## 📬 Contact
+If you have any questions, suggestions, or just want to connect, feel free to reach out:
+
+Name: Marios Moraitis
+
+Email: mariosmorait.01@gmail.com
+
+GitHub: https://github.com/MariosMoraitis
+
+LinkedIn: https://www.linkedin.com/in/marios-moraitis-510539237/
+
+Feel free to open issues or contribute!!!
