@@ -1,87 +1,72 @@
-# 📧 Outlook Automation Tool
+# 📬 Outlook Automation
 
-A lightweight desktop tool written in **Python** to automate repetitive email tasks using **Microsoft Outlook**.
+**Outlook Automation** is a Python-based app that helps you quickly prepare Outlook email drafts based on predefined templates, greetings, and user settings.
 
-This app allows users to:
-- Automatically fill in recipient details
-- Set email subject and body dynamically
-- Include a greeting based on time of day (Good morning / Good evening)
-- Sign off with a personalized signature
-- Use localized messages via configuration
-
-> The final app is compiled to `.exe` using **PyInstaller**, so Python is not required on the end user's system.
-> You can download the standalone executable for your platform from the [Release Page](https://github.com/MariosMoraitis/Outlook_Automation/releases), and run it without installing Python.
+Now featuring a **simple and modern GUI** built with [Eel](https://github.com/ChrisKnott/Eel) (Python + HTML/JS)!
 
 ---
 
 ## 🚀 Features
 
-- 🕓 Time-based greeting (morning/evening)
-- 📎 Custom signature
-- 🌐 Multi-language support (Greek/English)
-- ⚙️ User-configurable JSON files
-- 🧠 Error handling with informative messages
-- ✅ Works offline, locally
+- 📧 Automatically generate a draft email in Outlook.
+- 🌐 Supports multiple languages (e.g., Greek, English).
+- ✍️ Optionally include your Outlook signature.
+- 🛠 Easily configure settings from a web-based GUI.
+- 🖥️ Standalone executable (`.exe`) version available.
 
 ---
 
-## 🧰 Requirements
+## 🛠 How to Use
 
-- Windows 10/11
-- Microsoft Outlook installed
+### 1. Run the Application
 
-For development only:
-- Python 3.x
-- `pywin32` package
+- If you're running from source:
+  ```bash
+  python main_gui.py
+  ```
+- If you're using the packaged .exe:
 
----
+  Just double-click main_gui.exe.
 
-## ⚙️ Configuration
+➡️ A small browser window will open with the GUI.
 
-### settings.json
-This file defines global app behavior. Users can freely edit values, but should not change the keys.
+### 2. Send an Email
+  Enter the issue number in the input box.
 
-```json
-{
-  "lang": "en",
-  "signature": "yes"
-}
+  Click "Send Mail".
+
+  An Outlook draft will open automatically, pre-filled according to your settings.
+
+### 3. Edit Settings
+  Click the "Settings" button on the main page.
+
+  You can edit:
+
+  Language: gr for Greek or en for English.
+
+  Signature: yes to include Outlook signature, no to omit it.
+
+  Press Save to update settings.json.
+
+  After saving, you'll automatically return to the main page.
+
+  ⚡ Note:
+  New settings are applied instantly without needing to restart the app!
+
+## ⚙️ Building the Executable (Optional)
+If you want to build your own .exe:
+```bash
+pyinstaller --onefile --add-data "web;web" --add-data "parameters;parameters" main_gui.py
 ```
-lang: Language of greetings and signature block ("en" for English, "gr" for Greek)
-signature: Will appear at the bottom of the email
+✅ This bundles everything, including your HTML/CSS/JS and settings.
 
-### mail_config.json
-Defines email content such as recipients and message body.
-```json
-{
-  "recipients": "email1@example.com;email2@example.com",
-  "cc_recipients": "cc1@example.com",
-  "user_name": "Your Name",
-  "subject": "",
-  "body": "Please review the issue number "
-}
+## 📋 Requirements
+Python 3.10+
+Eel
+pywin32 (for Outlook automation)
+Outlook installed and configured on your PC
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
 ```
-recipients: Semicolon-separated primary recipients
-
-cc_recipients: Semicolon-separated CC recipients
-
-subject: If left blank, User's input will be inserted.
-
-user_name: Will appear as part of the signature
-
-body: The main part of the email — the issue number will be appended automatically.
-
-## ▶️ How to Use
-Run the compiled .exe file (no need for Python).
-
-When prompted, enter the issue number.
-
-Microsoft Outlook will open with a new email draft:
-
-Recipients filled in
-
-Subject set as the issue number
-
-Body formatted with a greeting, message, and signature
-
-You can review and send the email manually.
