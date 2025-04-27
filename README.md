@@ -6,10 +6,6 @@ Now featuring a **simple and modern GUI** built with [Eel](https://github.com/Ch
 
 ---
 
-## 🎥 Demo
-
-![Outlook Automation Demo](assets/demo.gif)
-
 ## 🚀 Features
 
 - 📧 Automatically generate a draft email in Outlook.
