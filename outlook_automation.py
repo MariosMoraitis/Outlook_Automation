@@ -106,7 +106,6 @@ def outlook_main(issue_number) -> None:
         mail.Display()
         if signature_flag:
             signature = mail.HTMLBody  # This now contains the default Outlook signature
-            # Now insert your text above the signature
             final_body: str = f'{_greeting}<br><br>{body}\n\n{signature}'
             mail.HTMLBody = final_body
         else:
