@@ -9,7 +9,7 @@ def resource_path(relative_path) -> str:
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
         # PyInstaller stores data files in a temp folder
-        base_path = sys.MEIPASS
+        base_path = sys.MEIPASS     #type: ignore
     except Exception:
         base_path = os.path.abspath(".")
     
