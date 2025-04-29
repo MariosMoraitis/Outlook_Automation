@@ -11,7 +11,7 @@ Download from: https://github.com/MariosMoraitis/Outlook_Automation/releases/tag
 ## 🚀 Features
 
 - 📧 Automatically generate a draft email in Outlook.
-- 🌐 Supports multiple languages (e.g., Greek, English).
+- 🌐 Supporting languages: English & Greek.
 - ✍️ Optionally include your Outlook signature.
 - 🛠 Easily configure settings from a web-based GUI.
 - 🖥️ Standalone executable (`.exe`) version available.
