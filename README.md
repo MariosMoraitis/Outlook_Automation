@@ -4,7 +4,7 @@
 
 Now featuring a **simple and modern GUI** built with [Eel](https://github.com/ChrisKnott/Eel) (Python + HTML/JS)!
 
-Download from: https://github.com/MariosMoraitis/Outlook_Automation/releases/tag/version_2.0
+Download from: https://github.com/MariosMoraitis/Outlook_Automation/releases/tag/version_2.1
 
 ---
 
