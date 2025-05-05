@@ -3,6 +3,7 @@ import json
 import sys
 import os
 from outlook_automation import outlook_main
+from error_log import show_error, log_error
 
 # Fix path when bundled with PyInstaller
 def resource_path(relative_path) -> str:
@@ -38,15 +39,19 @@ def update_settings(lang, signature):
         return "✅ Settings saved successfully!"
     
     except Exception as e:
-        return f"❌ Error: {str(e)}"
+        error = f"❌ Error: {str(e)}"
+        log_error(error)
+        return error
 
 @eel.expose
 def send_email(issue_number):    
     try:
         outlook_main(issue_number)
+        return "✅ Email prepared!"
+    except SystemExit as e:
+        return show_error()
     except Exception as e:
-        return str(e)
-    
-    return "✅ Email prepared!"
+        return show_error()
+
 
 eel.start('index.html', size=(500, 500))

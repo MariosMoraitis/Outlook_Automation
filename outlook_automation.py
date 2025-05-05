@@ -1,4 +1,5 @@
 from datetime import datetime
+from error_log import log_error
 import win32com.client
 import json
 import importlib
@@ -33,16 +34,16 @@ def load_settings_and_config():
 
     except KeyError as e:
         # Handle missing required keys in settings.json
-        print(f"\n⚠️ ERROR: {e}")
-        quit()
+        log_error(str(e))
+        exit(1)
     except FileNotFoundError:
         # Handle missing settings.json file
-        print("\n⚠️ ERROR: JSON file: 'settings.json' not found!!!.")
-        quit()
+        log_error("⚠️ JSON file: 'settings.json' not found!!!.")
+        exit(1)
     except Exception as e:
         # Handle any other unexpected errors
-        print("\n⚠️ ERROR: Unexpected error occurred...")
-        quit()
+        log_error("⚠️ Unexpected error occurred...")
+        exit(1)
 
 def get_greeting(config) -> str:
     """
@@ -73,9 +74,11 @@ def load_json() -> dict | None:
         return data
     
     except FileNotFoundError:
-        print("\n⚠️ ERROR: JSON file: mail_config.json' not found!!!.")
+        log_error("⚠️ JSON file: mail_config.json' not found!!!.")
+        exit(1)
     except Exception as e:
-        print("\n⚠️ ERROR: Unexpected error occurred...")
+        log_error("⚠️ Unexpected error occurred...")
+        exit(1)
 
 def outlook_main(issue_number) -> None:
     """
@@ -84,8 +87,8 @@ def outlook_main(issue_number) -> None:
     and uses Outlook's COM interface to open the email ready to send.
     """
     config, signature_flag = load_settings_and_config()
-    if not config or signature_flag is None:
-        return
+    # if not config or signature_flag is None:
+    #     return
     
     print("Let's prepare the mail...")
 
