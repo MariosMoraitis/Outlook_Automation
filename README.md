@@ -58,7 +58,7 @@ Download from: https://github.com/MariosMoraitis/Outlook_Automation/releases/tag
 ## ⚙️ Building the Executable (Optional)
 If you want to build your own .exe:
 ```bash
-pyinstaller --onefile --add-data "web;web" --add-data "parameters;parameters" main_gui.py
+pyinstaller --noconsole --onefile --add-data "web;web" --add-data "parameters;parameters" main_gui.py
 ```
 ✅ This bundles everything, including your HTML/CSS/JS and settings.
 
