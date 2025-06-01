@@ -26,8 +26,8 @@ def show_error() -> str:
         with open(log_file, 'rb') as f:
             f.seek(0, 2) # Go to the end of file
             end = f.tell()
-            if end == 0:
-                return "⚠️ Log file is empty."
+            # if end == 0:
+            #     return "⚠️ Log file is empty."
 
             buffer = bytearray()
             pointer = end - 1
